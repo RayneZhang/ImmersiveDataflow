@@ -1,0 +1,39 @@
+{
+  "name": "vrbehavior",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start:dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RayneZhang/ImmersiveDataflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RayneZhang/ImmersiveDataflow/issues"
+  },
+  "homepage": "https://github.com/RayneZhang/ImmersiveDataflow#readme",
+  "dependencies": {
+    "aframe": "^0.9.0",
+    "aframe-environment-component": "^1.1.0",
+    "aframe-extras": "^6.0.0",
+    "aframe-fps-counter-component": "^1.0.1",
+    "aframe-teleport-controls": "^0.3.1",
+    "redux": "^4.0.1",
+    "redux-undo": "^1.0.0-beta9-9-7",
+    "three": "^0.96.0",
+    "ts-loader": "^5.2.0",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.1"
+  }
+}

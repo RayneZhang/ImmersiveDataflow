@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <script src="built/main.js"></script>
+
+        <script src='vendor/lines/LineSegmentsGeometry.js'></script>
+		<script src='vendor/lines/LineGeometry.js'></script>
+		<script src='vendor/lines/WireframeGeometry2.js'></script>
+		<script src='vendor/lines/LineMaterial.js'></script>
+		<script src='vendor/lines/LineSegments2.js'></script>
+		<script src='vendor/lines/Line2.js'></script>
+        <script src='vendor/lines/Wireframe.js'></script>
+        <script src="vendor/aframe-tooltip-component.min.js"></script>
+        <script src="vendor/aframe-aabb-collider-component.min.js"></script>
+        <script src="vendor/aframe-thumb-controls-component.min.js"></script>
+        <script src="vendor/threex.volumetricspotlightmaterial.js"></script>
+        <script src="vendor/threex.geometricglowmesh.js"></script>
+        <script src="vendor/threex.dilategeometry.js"></script>
+        <script src="vendor/threex.atmospherematerial.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <!-- Assets -->
+            <a-assets>
+                <img id="uinormal" src="assets/images/ui-normal.png" crossorigin="anonymous">
+                <img id="uihover" src="assets/images/ui-hover.png" crossorigin="anonymous">
+
+                <!-- Icons -->
+                <img id="source_icon" src="assets/images/source.png" crossorigin="anonymous">
+                <img id="cube_icon" src="assets/images/cube.png" crossorigin="anonymous">
+                <img id="operator_icon" src="assets/images/operator.png" crossorigin="anonymous">
+                <img id="light_icon" src="assets/images/light.png" crossorigin="anonymous">
+                <img id="avatar_icon" src="assets/images/avatar.png" crossorigin="anonymous">
+
+                <a-asset-item id="menu-obj" src="assets/models/menu/menu.obj"></a-asset-item>
+
+                <a-asset-item id="blue-obj" src="assets/models/bottles/objs/blue_bottle.obj"></a-asset-item>
+                <a-asset-item id="blue-mtl" src="assets/models/bottles/objs/blue_bottle.mtl"></a-asset-item>
+                <a-asset-item id="plug-obj" src="assets/models/operator/plug.obj"></a-asset-item>
+
+                <a-asset-item id="functionBlock-obj" src="assets/models/operatorV2/functionBlock.obj"></a-asset-item>
+                <a-asset-item id="input-obj" src="assets/models/operatorV2/input.obj"></a-asset-item>
+                <a-asset-item id="output-obj" src="assets/models/operatorV2/output.obj"></a-asset-item>
+                <a-asset-item id="paramBlock-obj" src="assets/models/operatorV2/paramBlock.obj"></a-asset-item>
+                
+                <a-asset-item id="switch-obj" src="assets/models/switch/switch.obj"></a-asset-item>
+                <a-asset-item id="switch-base-obj" src="assets/models/switch/switch_base.obj"></a-asset-item>
+                <a-asset-item id="rail-obj" src="assets/models/slider/rail.obj"></a-asset-item>
+                <a-asset-item id="slider-obj" src="assets/models/slider/slider.obj"></a-asset-item>
+
+                <!-- Stage -->
+                <a-asset-item id="stage-obj" src="assets/models/stages/01_stage/stage.obj"></a-asset-item>
+                <a-asset-item id="stage-mtl" src="assets/models/stages/01_stage/stage.mtl"></a-asset-item>
+ 
+                
+                <a-asset-item id="city-gltf" src="assets/models/city/scene.gltf"></a-asset-item>
+                <a-asset-item id="singer-glb" src="assets/models/performers/singer.glb"></a-asset-item>
+                <a-asset-item id="guitarist-glb" src="assets/models/performers/guitarist.glb"></a-asset-item>
+                <a-asset-item id="drummer-glb" src="assets/models/performers/drummer.glb"></a-asset-item>
+
+                <!-- Speakers -->
+                <a-asset-item id="speaker-shell-obj" src="assets/models/speakers/01_speaker/speaker_shell.obj"></a-asset-item>
+                <a-asset-item id="speaker-plane-obj" src="assets/models/speakers/01_speaker/speaker_plane.obj"></a-asset-item>
+                <img id="speaker-abledo" src="assets/models/speakers/01_speaker/textures/Speaker_Abledo.png">
+                <img id="speaker-normal" src="assets/models/speakers/01_speaker/textures/Speaker_Normals.png">
+                <img id="grille-abledo" src="assets/models/speakers/01_speaker/textures/Grille_Abledo.png">
+                <img id="grille-normal" src="assets/models/speakers/01_speaker/textures/Grille_Normals.png">
+
+                <!-- Lights -->
+                <a-asset-item id="light-01-obj" src="assets/models/lights/01_stage_light/stage_light.obj"></a-asset-item>
+                <img id="light-01-abledo" src="assets/models/lights/01_stage_light/Textures/stage_light_tx_Base_Color.jpg">
+                <img id="light-01-normal" src="assets/models/lights/01_stage_light/Textures/stage_light_tx_Normal_DirectX.jpg">
+                <img id="light-01-emissive" src="assets/models/lights/01_stage_light/Textures/stage_light_tx_Emissive.jpg">
+                <a-asset-item id="light-02-obj" src="assets/models/lights/02_stage_light/light_02.obj"></a-asset-item>
+                <a-asset-item id="light-02-mtl" src="assets/models/lights/02_stage_light/light_02.mtl"></a-asset-item>
+
+                <!-- Avatars -->
+                <a-asset-item id="headset-obj" src="assets/models/avatars/headset/headset.obj"></a-asset-item>
+                <a-asset-item id="headset-mtl" src="assets/models/avatars/headset/headset.mtl"></a-asset-item>
+                <a-asset-item id="controller-left" src="assets/models/avatars/oculus_controller_left/scene.gltf"></a-asset-item>
+                <a-asset-item id="controller-right" src="assets/models/avatars/oculus_controller_right/scene.gltf"></a-asset-item>
+
+                <!-- Instances -->
+                <a-asset-item id="bottle-instance" src="assets/models/instances/data/01_bottle_instance.obj"></a-asset-item>
+                <a-asset-item id="light-01-instance" src="assets/models/instances/assets/01_stage_light_instance.obj"></a-asset-item>
+                <a-asset-item id="headset-instance" src="assets/models/instances/assets/headset_instance.obj"></a-asset-item>
+                <a-asset-item id="controller-left-instance" src="assets/models/instances/assets/controller_left_instance.obj"></a-asset-item>
+                <a-asset-item id="controller-right-instance" src="assets/models/instances/assets/controller_right_instance.obj"></a-asset-item>
+                <a-asset-item id="switch-instance" src="assets/models/instances/assets/switch_instance.obj"></a-asset-item>
+                <a-asset-item id="slider-instance" src="assets/models/instances/assets/slider_instance.obj"></a-asset-item>
+
+            </a-assets>
+
+            <!-- Camera Rig-->
+            <a-entity id="cameraRig" movement-controls = "fly: true; speed: 0.1">
+                <!-- camera -->
+                <a-entity id="head" camera look-controls></a-entity>
+
+                <!-- Controllers. -->
+                <a-entity id="rightHand" oculus-touch-controls="hand: right; buttonColor: #ffffff" controller-material-controller thumb-controls="hand: right" aabb-collider="objects: .connectable" tooltip-listener collision-listener></a-entity>
+                <a-entity id="rightHandInfo" entity-follow="targetEntity: #rightHand" right-trigger-listener right-grip-listener right-abutton-listener scale-controller="hand: right" rotation-controller="hand: right" 
+                raycaster="origin: 0, -0.01, 0; direction: 0, -0.8, -1; showLine: true; objects: .movable, .ui, .connectable, .Arrow, .Switch, .Slider; far: 1" 
+                line="color: #2e3131; opacity: 0.8" >
+                    <a-entity id="rightTooltips" class="oculus-tooltips" visible="true">
+                        <!-- <a-entity tooltip="text: Freeze attributes; width: 0.1; height: 0.03; targetPosition: -0.01 0.0 0.004; rotation: -90 0 0; lineHorizontalAlign: right; src: assets/images/tooltip.png"
+                            position="-0.10 0.013 0.013">
+                        </a-entity> -->
+                        <!-- <a-entity tooltip="text: Turn on/off instructions; width: 0.12; height: 0.03; targetPosition: -0.02 -0.015 -0.001; rotation: -90 0 0; lineHorizontalAlign: right; src: assets/images/tooltip.png"
+                            position="-0.059 0.015 -0.028">
+                        </a-entity> -->
+                        <a-entity tooltip="text: Rotation\n(slide left/right); width: 0.09; height: 0.04; targetPosition: 0.004 0.00 -0.01; lineHorizontalAlign: center; lineVerticalAlign: top; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="0.07 0.04 0.06">
+                        </a-entity>
+                        <a-entity tooltip="text: Select; width: 0.05; height: 0.04; targetPosition: -0.005 -0.032 -0.015; lineHorizontalAlign: left; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="0.09 0.020 -0.067">
+                        </a-entity>
+                        <a-entity tooltip="text: Grab an object; width: 0.09; height: 0.03; targetPosition: -0.005 -0.022 0.027; rotation: -90 0 0; lineHorizontalAlign: right; src: assets/images/tooltip.png"
+                            position="-0.08 -0.01 0.055">
+                        </a-entity>
+                    </a-entity>
+                </a-entity>
+
+                <a-entity id="leftHand" oculus-touch-controls="hand: left; buttonColor: #ffffff" controller-material-controller thumb-controls="hand: left" aabb-collider="objects: .connectable" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: ybutton"></a-entity>
+                <a-entity id="leftHandInfo" entity-follow="targetEntity: #leftHand" global-menu left-trigger-listener left-grip-listener>
+                    <a-entity id="leftTooltips" class="oculus-tooltips" visible="true">
+                        <a-entity tooltip="text: Main Menu; width: 0.07; height: 0.03; targetPosition: 0.012 0.0 0.003; rotation: -90 0 0; src: assets/images/tooltip.png"
+                                position="0.066 0.013 0.013">
+                        </a-entity>
+                        <!-- <a-entity tooltip="text: Teleport; width: 0.06; height: 0.03; targetPosition: 0.018 -0.010 -0.011; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="0.059 0.015 -0.028">
+                        </a-entity> -->
+                        <a-entity tooltip="text: Move; width: 0.09; height: 0.03; targetPosition: -0.004 0.00 -0.01; lineHorizontalAlign: center; lineVerticalAlign: top; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="-0.07 0.01 0.06">
+                        </a-entity>
+                        <a-entity tooltip="text: Press to create an object!; width: 0.14; height: 0.04; targetPosition: 0.002 -0.03 -0.015; lineHorizontalAlign: right; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="-0.09 0.020 -0.05">
+                        </a-entity>
+                        <!-- <a-entity tooltip="text: Undo; width: 0.05; height: 0.03; targetPosition: 0.005 -0.022 0.027; rotation: -90 0 0; src: assets/images/tooltip.png"
+                            position="0.058 -0.01 0.055">
+                        </a-entity> -->
+                    </a-entity>
+                </a-entity>
+                
+            </a-entity>
+
+            <!-- Lighting Condition -->
+            <!-- <a-entity id="env" environment="preset: forest"></a-entity>
+            <a-entity id="ambientLight" light="type: ambient; intensity: 0.2"></a-entity> -->
+            <!-- <a-entity light="type: directional; color: #fff1bc; intensity: 0.2" position="-0.5 1 0"></a-entity> -->
+            <a-entity id="env" environment="preset: default; lighting: none; ground: none; fog: 0"></a-entity>
+            <a-entity light="color: #ffffff; groundColor: #79a8bb; intensity: 0.6; type: hemisphere"></a-entity>
+            <a-entity light="type: directional; color: #ffffff; intensity: 0.15;" position="31 80 50"></a-entity>
+            <a-entity id="stage" position="0 -0.2 -10" scale="0.8 0.8 0.8" obj-model="obj: #stage-obj; mtl: #stage-mtl" mtl-lighting></a-entity>
+            <a-entity id="city"  position="0 0 -10" gltf-model="#city-gltf" mtl-lighting></a-entity>
+            <a-entity id="singer"  position="0 1.7 -5" scale="2.5 2.5 2.5" gltf-model="#singer-glb"></a-entity>
+            <a-entity id="guitarist"  position="-3.5 1.25 -7" scale="2.5 2.5 2.5" gltf-model="#guitarist-glb"></a-entity>
+            <a-entity id="drummer"  position="3.5 1.4 -8" scale="2.5 2.5 2.5" gltf-model="#drummer-glb"></a-entity>
+
+            <!-- Utils -->
+            <a-entity id="lines" draw-line></a-entity>
+            <a-entity id="redux" state-binding></a-entity>
+            
+            </a-scene>
+    </body>
+</html>
